@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ch16.Models.Delivery>
+@{
+    ViewBag.Title = "DelDetail3";
+}
+
+<h2><img src="~/images/delivery.png" width="50" /><label color: #fff;> 選擇外送員</label></h2>
+
+<div class="form-group">
+    <div class="col-md-10">
+        @using (Html.BeginForm("selectdel", "Order", FormMethod.Post))
+        {
+            <select id="duserid" name="duserid" class="form-control">
+                @foreach (var item in Model)
+                {
+                    <option value="@item.duserid">@item.dname</option>
+                }
+            </select><input type="submit" value="確定指派" class="btn btn-success" />
+            <hr />            
+        }
+        <button type="button" class="btn btn-link" style="font-size:medium" onclick="location.href='@Url.Action("DemoOrder", "Order")'">
+            <span class="glyphicon glyphicon-hand-left"></span> 返回
+        </button>
+    </div>
+</div>
+
+
+
+

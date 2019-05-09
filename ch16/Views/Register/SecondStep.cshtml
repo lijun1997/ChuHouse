@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ch16.Models.Category>
+@{
+    ViewBag.Title = "SecondStep";
+}
+
+<h2><img src="~/images/register.png" width="50" /><label color: #fff;> 第二步</label></h2>
+<div class="form-group">
+    <div class="col-md-6">
+        @using (Html.BeginForm("SecondStep", "Register", FormMethod.Post))
+        {
+            <div>
+                <select id="cateid" name="cateid" class="form-control">
+                    @foreach (var item in Model)
+                    {
+                        <option value="@item.cateid">@item.sclass</option>
+                    }
+                </select>
+            </div>
+            <p></p>
+            <div>
+                <div>
+                    是否提供外送服務?<img src="~/images/2.png" width="30" />
+                </div>
+                <div>
+                    <input type="radio" id="1" name="del" value="1"
+                           checked>
+                    <label for="huey"> 是</label>
+
+                    <input type="radio" id="2" name="del" value="2">
+                    <label for="dewey"> 否</label>
+                </div>                
+            </div>
+
+            <input type="submit" value="確定" />
+        }
+    </div>
+</div>
+

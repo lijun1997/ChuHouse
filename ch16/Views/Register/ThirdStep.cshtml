@@ -1,0 +1,51 @@
+﻿@model ch16.Models.StoreMember
+@{
+    ViewBag.Title = "ThirdStep";
+}
+
+<h2><img src="~/images/register.png" width="50" /><label color: #fff;> 第三步-請上傳圖片</label></h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @using (Html.BeginForm("FileUploadLogo", "Register", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <label for="file">上傳店家圖片:</label>
+                <input type="file" name="file" id="file" style="width: 100%;" accept="image/gif, image/jpeg, image/png" />
+                <input type="submit" value="上傳" class="submit" />
+            }
+        </th>
+        <th>
+            @using (Html.BeginForm("FileUploadMenu", "Register", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <label for="file">上傳菜單圖片:</label>
+                <input type="file" name="file" id="file" style="width: 100%;" accept="image/gif, image/jpeg, image/png" />
+                <input type="submit" value="上傳" class="submit" />
+            }
+        </th>
+    </tr>
+    <tr>
+        <th>
+            店家圖片
+        </th>
+        <th>
+            菜單圖片
+        </th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>
+            <img src="~/images/@Model.sphotoname" width="300" />
+        </td>
+        <td>
+            <img src="~/images/@Model.mephotoname" width="300" />
+        </td>
+    </tr>
+    
+</table>
+
+<div>
+
+    @Html.ActionLink("完成註冊", "Done", new { onclick = "return confirm('請等待審核');", @class = "btn btn-primary btn-xs" })    
+</div>

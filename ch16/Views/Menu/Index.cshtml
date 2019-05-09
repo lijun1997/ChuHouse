@@ -1,0 +1,101 @@
+﻿@model ch16.Models.CVMmenucate
+@{
+    ViewBag.Title = "MenuShow";
+}
+
+<h2><img src="~/images/menu.png" width="50" /><label color: #fff;> 菜單</label></h2>
+<div class="row">
+    <div class="col-xs-4">
+        <label font-size: 30px; color: #fff;>所有餐點分類</label>
+        <table class="table">
+            @using (Html.BeginForm("IndexCate", "Menu", FormMethod.Post))
+            {
+                <tr>
+                    <th>
+                        <input type="text" name="mtype" placeholder="新增餐點分類" maxlength="20" required="required" />
+                    </th>
+                    <th>
+                        <input type="submit" value="確定" onclick="location.href='Menu/Index'" />
+                    </th>
+                </tr>
+            }
+            <tr>
+                <th>
+                    @Html.ActionLink("全部餐點", "Index")
+                </th>
+                <th>
+
+                </th>
+            </tr>
+            @foreach (var item in Model.menucate)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.mtype, "Index", new { mcid = item.mcid })
+                    </td>
+                    <td>
+                        @Html.ActionLink("刪除", "DeleteCate", new { mcid = item.mcid }, new { onclick = "return confirm('若分類內有餐點將一併刪除，確定要刪除嗎?');", @class = "btn btn-primary btn-xs" })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="col-xs-7">
+        <label font-size: 35px; color: #fff;>@ViewBag.cate</label>
+        <table class="table">
+            @using (Html.BeginForm("CreateMenu", "Menu", FormMethod.Post))
+            {
+                <tr>
+                    <th>
+                        <select id="mcid" name="mcid" class="form-control">
+                            @foreach (var item in Model.menucate)
+                            {
+                                <option value="@item.mcid">@item.mtype</option>
+                            }
+                        </select>
+                    </th>
+                    <th>
+                        <input type="text" name="mname" placeholder="輸入餐點名稱" maxlength="20" required="required" />
+                    </th>
+                    <th>
+                        <input type="text" name="mprice" placeholder="輸入價格" min="1" max="1000" required="required" />
+                    </th>
+                    <th>
+                        <input type="submit" value="確定" onclick="location.href='Menu/Index'" />
+                    </th>
+                </tr>
+            }
+            <tr>
+                <th>
+                    @*&nbsp;&nbsp;&nbsp;*@
+                </th>
+                <th>
+                    餐點
+                </th>
+                <th>
+                    價格
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model.menu)
+            {
+                <tr>
+                    <td></td>
+                    <td>
+                        <label font-size: 35px; color: #fff;>@item.mname</label>                        
+                    </td>
+                    <td>
+                        <label font-size: 35px; color: #fff;>@item.mprice</label>
+                        
+                    </td>                    
+                    <td>
+                        @Html.ActionLink("修改價錢", "EditMenu", new { id = item.mid }) |
+                        @Html.ActionLink("刪除", "DeleteMenu", new { id = item.mid }, new { onclick = "return confirm('確定刪除嗎?');", @class = "btn btn-primary btn-xs" })
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </div>
+
+</div>

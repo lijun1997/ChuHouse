@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ch16.Models.Order>
+
+@{
+    ViewBag.Title = "DelOrder";
+}
+
+<h2><img src="~/images/order.png" width="50" /><label color: #fff;> 歷史訂單</label></h2>
+
+<table class="table">
+    <tr>
+        <th>
+            完成時間
+        </th>  
+        <th>
+            收件人姓名
+        </th>
+        <th>
+            電話
+        </th>
+        <th>
+            外送地址
+        </th>
+        @*<th>
+            取餐時間
+        </th>*@        
+        <th>
+            訂單進度
+        </th>              
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.odate)
+        </td> 
+        <td>
+            @Html.DisplayFor(modelItem => item.receiver)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.odate)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.ostatus)
+        </td>
+        
+        <td>           
+            @Html.ActionLink("訂單詳情", "DelOrderDetail", new { id=item.orderguid })             
+        </td>
+    </tr>
+}
+
+</table>

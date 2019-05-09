@@ -1,0 +1,1119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ChuHou1120Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="aid" />
+          </Key>
+          <Property Name="aid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="auserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="apwd" Type="nvarchar" MaxLength="20" />
+          <Property Name="aname" Type="nvarchar" MaxLength="20" />
+          <Property Name="aphone" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="caid" />
+          </Key>
+          <Property Name="caid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cateid" Type="char" MaxLength="10" />
+          <Property Name="sclass" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="CustomerMember">
+          <Key>
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cuserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="cpwd" Type="nvarchar" MaxLength="20" />
+          <Property Name="cname" Type="nvarchar" MaxLength="20" />
+          <Property Name="cphone" Type="char" MaxLength="10" />
+          <Property Name="cemail" Type="nvarchar" MaxLength="50" />
+          <Property Name="caddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="cstatus" Type="char" MaxLength="1" />
+          <Property Name="creport" Type="char" MaxLength="1" />
+          <Property Name="cphotoname" Type="nvarchar" MaxLength="500" />
+          <Property Name="cphotopath" Type="nvarchar" MaxLength="500" />
+          <Property Name="ctime" Type="datetime" />
+          <Property Name="cretime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CustomerReport">
+          <Key>
+            <PropertyRef Name="crid" />
+          </Key>
+          <Property Name="crid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="auserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="cuserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="suserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="orderguid" Type="char" MaxLength="10" />
+          <Property Name="crcontent" Type="nvarchar" MaxLength="500" />
+          <Property Name="crreply" Type="nvarchar" MaxLength="500" />
+          <Property Name="crstatus" Type="char" MaxLength="1" />
+          <Property Name="ctime" Type="datetime" />
+          <Property Name="cre" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="did" />
+          </Key>
+          <Property Name="did" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="duserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="dpwd" Type="nvarchar" MaxLength="20" />
+          <Property Name="dname" Type="nvarchar" MaxLength="20" />
+          <Property Name="dphone" Type="char" MaxLength="10" />
+          <Property Name="suserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="historydel" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Like">
+          <Key>
+            <PropertyRef Name="cuserid" />
+            <PropertyRef Name="suserid" />
+          </Key>
+          <Property Name="cuserid" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="suserid" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="meid" />
+          </Key>
+          <Property Name="meid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mid" Type="char" MaxLength="10" />
+          <Property Name="suserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="mname" Type="nvarchar" MaxLength="20" />
+          <Property Name="mprice" Type="int" />
+          <Property Name="mcid" Type="char" MaxLength="10" />
+          <Property Name="historymenu" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="MenuCategory">
+          <Key>
+            <PropertyRef Name="mcat" />
+          </Key>
+          <Property Name="mcat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mcid" Type="char" MaxLength="10" />
+          <Property Name="mtype" Type="nvarchar" MaxLength="20" />
+          <Property Name="suserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="mcphotoname" Type="nvarchar" MaxLength="200" />
+          <Property Name="mcphotopath" Type="nvarchar" MaxLength="200" />
+          <Property Name="historycate" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="oid" />
+          </Key>
+          <Property Name="oid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="orderguid" Type="char" MaxLength="10" />
+          <Property Name="cuserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="suserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="duserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="receiver" Type="nvarchar" MaxLength="20" />
+          <Property Name="phone" Type="char" MaxLength="10" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" />
+          <Property Name="orderdate" Type="datetime" />
+          <Property Name="oway" Type="nvarchar" MaxLength="10" />
+          <Property Name="odate" Type="datetime" />
+          <Property Name="ostatus" Type="nvarchar" MaxLength="20" />
+          <Property Name="note" Type="nvarchar" MaxLength="200" />
+          <Property Name="isapproved" Type="char" MaxLength="1" />
+          <Property Name="opwd" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="odid" />
+          </Key>
+          <Property Name="odid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="orderguid" Type="char" MaxLength="10" />
+          <Property Name="cuserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="mid" Type="char" MaxLength="10" />
+          <Property Name="mqty" Type="nvarchar" MaxLength="5" />
+          <Property Name="qrcode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Score">
+          <Key>
+            <PropertyRef Name="scid" />
+          </Key>
+          <Property Name="scid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="scoreid" Type="char" MaxLength="10" />
+          <Property Name="cuserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="orderguid" Type="char" MaxLength="10" />
+          <Property Name="scgrade" Type="int" />
+          <Property Name="sccontent" Type="nvarchar" MaxLength="200" />
+          <Property Name="scdate" Type="datetime" />
+          <Property Name="scphotoname" Type="nvarchar" MaxLength="200" />
+          <Property Name="scphotopath" Type="nvarchar" MaxLength="200" />
+          <Property Name="grade" Type="nvarchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="StoreMember">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="suserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="spwd" Type="nvarchar" MaxLength="20" />
+          <Property Name="sname" Type="nvarchar" MaxLength="20" />
+          <Property Name="sphone" Type="char" MaxLength="10" />
+          <Property Name="semail" Type="nvarchar" MaxLength="50" />
+          <Property Name="saddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="shour" Type="nvarchar" MaxLength="50" />
+          <Property Name="cateid" Type="char" MaxLength="10" />
+          <Property Name="sinf" Type="nvarchar" MaxLength="200" />
+          <Property Name="sstatus" Type="char" MaxLength="1" />
+          <Property Name="sopen" Type="char" MaxLength="1" />
+          <Property Name="sreport" Type="char" MaxLength="1" />
+          <Property Name="sdelivery" Type="char" MaxLength="1" />
+          <Property Name="sphotoname" Type="nvarchar" MaxLength="200" />
+          <Property Name="sphotopath" Type="nvarchar" MaxLength="200" />
+          <Property Name="mephotoname" Type="nvarchar" MaxLength="200" />
+          <Property Name="mephotopath" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="StoreReport">
+          <Key>
+            <PropertyRef Name="srid" />
+          </Key>
+          <Property Name="srid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="auserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="suserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="cuserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="orderguid" Type="char" MaxLength="10" />
+          <Property Name="srcontent" Type="nvarchar" MaxLength="500" />
+          <Property Name="srreply" Type="nvarchar" MaxLength="500" />
+          <Property Name="srstatus" Type="char" MaxLength="1" />
+          <Property Name="stime" Type="datetime" />
+          <Property Name="sre" Type="datetime" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'ChuHou1120.dbo.DetailMenu' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="DetailMenu">
+          <Key>
+            <PropertyRef Name="odid" />
+          </Key>
+          <Property Name="odid" Type="int" Nullable="false" />
+          <Property Name="mname" Type="nvarchar" MaxLength="20" />
+          <Property Name="mprice" Type="int" />
+          <Property Name="mqty" Type="nvarchar" MaxLength="5" />
+          <Property Name="orderguid" Type="char" MaxLength="10" />
+          <Property Name="mid" Type="char" MaxLength="10" />
+          <Property Name="cuserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="cname" Type="nvarchar" MaxLength="20" />
+          <Property Name="suserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="sname" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'ChuHou1120.dbo.MenuCate' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="MenuCate">
+          <Key>
+            <PropertyRef Name="mcat" />
+          </Key>
+          <Property Name="mcat" Type="int" Nullable="false" />
+          <Property Name="mtype" Type="nvarchar" MaxLength="20" />
+          <Property Name="mcid" Type="char" MaxLength="10" />
+          <Property Name="mname" Type="nvarchar" MaxLength="20" />
+          <Property Name="mprice" Type="int" />
+          <Property Name="suserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="mid" Type="char" MaxLength="10" />
+          <Property Name="Expr1" Type="char" MaxLength="10" />
+          <Property Name="Expr2" Type="nvarchar" MaxLength="20" />
+          <Property Name="historymenu" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'ChuHou1120.dbo.OrderDel' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="OrderDel">
+          <Key>
+            <PropertyRef Name="oid" />
+          </Key>
+          <Property Name="oid" Type="int" Nullable="false" />
+          <Property Name="orderguid" Type="char" MaxLength="10" />
+          <Property Name="cuserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="receiver" Type="nvarchar" MaxLength="20" />
+          <Property Name="phone" Type="char" MaxLength="10" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" />
+          <Property Name="orderdate" Type="datetime" />
+          <Property Name="oway" Type="nvarchar" MaxLength="10" />
+          <Property Name="odate" Type="datetime" />
+          <Property Name="ostatus" Type="nvarchar" MaxLength="20" />
+          <Property Name="note" Type="nvarchar" MaxLength="200" />
+          <Property Name="isapproved" Type="char" MaxLength="1" />
+          <Property Name="opwd" Type="nvarchar" MaxLength="10" />
+          <Property Name="suserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="duserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="dname" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'ChuHou1120.dbo.OrderReport' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="OrderReport">
+          <Key>
+            <PropertyRef Name="oid" />
+          </Key>
+          <Property Name="oid" Type="int" Nullable="false" />
+          <Property Name="orderguid" Type="char" MaxLength="10" />
+          <Property Name="cuserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="suserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="duserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="dname" Type="nvarchar" MaxLength="20" />
+          <Property Name="receiver" Type="nvarchar" MaxLength="20" />
+          <Property Name="phone" Type="char" MaxLength="10" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" />
+          <Property Name="orderdate" Type="datetime" />
+          <Property Name="oway" Type="nvarchar" MaxLength="10" />
+          <Property Name="odate" Type="datetime" />
+          <Property Name="ostatus" Type="nvarchar" MaxLength="20" />
+          <Property Name="note" Type="nvarchar" MaxLength="200" />
+          <Property Name="isapproved" Type="char" MaxLength="1" />
+          <Property Name="srcontent" Type="nvarchar" MaxLength="500" />
+          <Property Name="srreply" Type="nvarchar" MaxLength="500" />
+          <Property Name="srstatus" Type="char" MaxLength="1" />
+          <Property Name="stime" Type="datetime" />
+          <Property Name="sre" Type="datetime" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'ChuHou1120.dbo.smmu' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="smmu">
+          <Key>
+            <PropertyRef Name="meid" />
+          </Key>
+          <Property Name="meid" Type="int" Nullable="false" />
+          <Property Name="mname" Type="nvarchar" MaxLength="20" />
+          <Property Name="mprice" Type="int" />
+          <Property Name="sname" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'ChuHou1120.dbo.StoreCategory' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="StoreCategory">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="int" Nullable="false" />
+          <Property Name="suserid" Type="nvarchar" MaxLength="20" />
+          <Property Name="spwd" Type="nvarchar" MaxLength="20" />
+          <Property Name="sname" Type="nvarchar" MaxLength="20" />
+          <Property Name="sphone" Type="char" MaxLength="10" />
+          <Property Name="semail" Type="nvarchar" MaxLength="50" />
+          <Property Name="saddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="shour" Type="nvarchar" MaxLength="50" />
+          <Property Name="sinf" Type="nvarchar" MaxLength="200" />
+          <Property Name="sclass" Type="nvarchar" MaxLength="5" />
+          <Property Name="sphotoname" Type="nvarchar" MaxLength="200" />
+          <Property Name="cateid" Type="char" MaxLength="10" />
+          <Property Name="mephotoname" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_CustomerReport_Admin' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_CustomerReport_Admin" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_CustomerReport_CustomerMember' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_CustomerReport_CustomerMember" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_CustomerReport_Order' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_CustomerReport_Order" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_CustomerReport_StoreMember' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_CustomerReport_StoreMember" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_Delivery_StoreMember' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_Delivery_StoreMember" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_Like_CustomerMember' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_Like_CustomerMember" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_Like_StoreMember' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_Like_StoreMember" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_Menu_MenuCategory' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_Menu_MenuCategory" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_Menu_StoreMember' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_Menu_StoreMember" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_MenuCategory_StoreMember' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_MenuCategory_StoreMember" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_Order_CustomerMember' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_Order_CustomerMember" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_Order_Delivery' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_Order_Delivery" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_Order_StoreMember' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_Order_StoreMember" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_OrderDetail_CustomerMember' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_OrderDetail_CustomerMember" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_OrderDetail_Menu' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_OrderDetail_Menu" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_OrderDetail_Order' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_OrderDetail_Order" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_Score_CustomerMember' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_Score_CustomerMember" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_Score_Order' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_Score_Order" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_StoreMember_Category' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_StoreMember_Category" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_StoreReport_Admin' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_StoreReport_Admin" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_StoreReport_CustomerMember' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_StoreReport_CustomerMember" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_StoreReport_Order' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_StoreReport_Order" />-->
+        <!--產生期間發現錯誤:
+警告 6035: 關聯性 'FK_StoreReport_StoreMember' 在主要端上，有不屬於資料表索引鍵的資料行。已排除此關聯性。
+        <Association Name="FK_StoreReport_StoreMember" />-->
+        <EntityContainer Name="ChuHou1120ModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerMember" EntityType="Self.CustomerMember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerReport" EntityType="Self.CustomerReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Delivery" EntityType="Self.Delivery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Like" EntityType="Self.Like" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuCategory" EntityType="Self.MenuCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Score" EntityType="Self.Score" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StoreMember" EntityType="Self.StoreMember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StoreReport" EntityType="Self.StoreReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailMenu" EntityType="Self.DetailMenu" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DetailMenu].[odid] AS [odid], 
+    [DetailMenu].[mname] AS [mname], 
+    [DetailMenu].[mprice] AS [mprice], 
+    [DetailMenu].[mqty] AS [mqty], 
+    [DetailMenu].[orderguid] AS [orderguid], 
+    [DetailMenu].[mid] AS [mid], 
+    [DetailMenu].[cuserid] AS [cuserid], 
+    [DetailMenu].[cname] AS [cname], 
+    [DetailMenu].[suserid] AS [suserid], 
+    [DetailMenu].[sname] AS [sname]
+    FROM [dbo].[DetailMenu] AS [DetailMenu]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MenuCate" EntityType="Self.MenuCate" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MenuCate].[mcat] AS [mcat], 
+    [MenuCate].[mtype] AS [mtype], 
+    [MenuCate].[mcid] AS [mcid], 
+    [MenuCate].[mname] AS [mname], 
+    [MenuCate].[mprice] AS [mprice], 
+    [MenuCate].[suserid] AS [suserid], 
+    [MenuCate].[mid] AS [mid], 
+    [MenuCate].[Expr1] AS [Expr1], 
+    [MenuCate].[Expr2] AS [Expr2], 
+    [MenuCate].[historymenu] AS [historymenu]
+    FROM [dbo].[MenuCate] AS [MenuCate]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OrderDel" EntityType="Self.OrderDel" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OrderDel].[oid] AS [oid], 
+    [OrderDel].[orderguid] AS [orderguid], 
+    [OrderDel].[cuserid] AS [cuserid], 
+    [OrderDel].[receiver] AS [receiver], 
+    [OrderDel].[phone] AS [phone], 
+    [OrderDel].[address] AS [address], 
+    [OrderDel].[orderdate] AS [orderdate], 
+    [OrderDel].[oway] AS [oway], 
+    [OrderDel].[odate] AS [odate], 
+    [OrderDel].[ostatus] AS [ostatus], 
+    [OrderDel].[note] AS [note], 
+    [OrderDel].[isapproved] AS [isapproved], 
+    [OrderDel].[opwd] AS [opwd], 
+    [OrderDel].[suserid] AS [suserid], 
+    [OrderDel].[duserid] AS [duserid], 
+    [OrderDel].[dname] AS [dname]
+    FROM [dbo].[OrderDel] AS [OrderDel]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OrderReport" EntityType="Self.OrderReport" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OrderReport].[oid] AS [oid], 
+    [OrderReport].[orderguid] AS [orderguid], 
+    [OrderReport].[cuserid] AS [cuserid], 
+    [OrderReport].[suserid] AS [suserid], 
+    [OrderReport].[duserid] AS [duserid], 
+    [OrderReport].[dname] AS [dname], 
+    [OrderReport].[receiver] AS [receiver], 
+    [OrderReport].[phone] AS [phone], 
+    [OrderReport].[address] AS [address], 
+    [OrderReport].[orderdate] AS [orderdate], 
+    [OrderReport].[oway] AS [oway], 
+    [OrderReport].[odate] AS [odate], 
+    [OrderReport].[ostatus] AS [ostatus], 
+    [OrderReport].[note] AS [note], 
+    [OrderReport].[isapproved] AS [isapproved], 
+    [OrderReport].[srcontent] AS [srcontent], 
+    [OrderReport].[srreply] AS [srreply], 
+    [OrderReport].[srstatus] AS [srstatus], 
+    [OrderReport].[stime] AS [stime], 
+    [OrderReport].[sre] AS [sre]
+    FROM [dbo].[OrderReport] AS [OrderReport]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="smmu" EntityType="Self.smmu" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [smmu].[meid] AS [meid], 
+    [smmu].[mname] AS [mname], 
+    [smmu].[mprice] AS [mprice], 
+    [smmu].[sname] AS [sname]
+    FROM [dbo].[smmu] AS [smmu]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="StoreCategory" EntityType="Self.StoreCategory" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [StoreCategory].[sid] AS [sid], 
+    [StoreCategory].[suserid] AS [suserid], 
+    [StoreCategory].[spwd] AS [spwd], 
+    [StoreCategory].[sname] AS [sname], 
+    [StoreCategory].[sphone] AS [sphone], 
+    [StoreCategory].[semail] AS [semail], 
+    [StoreCategory].[saddress] AS [saddress], 
+    [StoreCategory].[shour] AS [shour], 
+    [StoreCategory].[sinf] AS [sinf], 
+    [StoreCategory].[sclass] AS [sclass], 
+    [StoreCategory].[sphotoname] AS [sphotoname], 
+    [StoreCategory].[cateid] AS [cateid], 
+    [StoreCategory].[mephotoname] AS [mephotoname]
+    FROM [dbo].[StoreCategory] AS [StoreCategory]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ChuHou1120Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="aid" />
+          </Key>
+          <Property Name="aid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="auserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="apwd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="aname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="aphone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="caid" />
+          </Key>
+          <Property Name="caid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cateid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="sclass" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CustomerMember">
+          <Key>
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cuserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="cpwd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="cname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="cphone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cemail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="caddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cstatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="creport" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cphotoname" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="cphotopath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ctime" Type="DateTime" Precision="3" />
+          <Property Name="cretime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CustomerReport">
+          <Key>
+            <PropertyRef Name="crid" />
+          </Key>
+          <Property Name="crid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="auserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="cuserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="suserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="orderguid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="crcontent" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="crreply" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="crstatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ctime" Type="DateTime" Precision="3" />
+          <Property Name="cre" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="did" />
+          </Key>
+          <Property Name="did" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="duserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dpwd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dphone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="suserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="historydel" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Like">
+          <Key>
+            <PropertyRef Name="cuserid" />
+            <PropertyRef Name="suserid" />
+          </Key>
+          <Property Name="cuserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="suserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="meid" />
+          </Key>
+          <Property Name="meid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="suserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="mname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="mprice" Type="Int32" />
+          <Property Name="mcid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="historymenu" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MenuCategory">
+          <Key>
+            <PropertyRef Name="mcat" />
+          </Key>
+          <Property Name="mcat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mcid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="mtype" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="suserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="mcphotoname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="mcphotopath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="historycate" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="oid" />
+          </Key>
+          <Property Name="oid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderguid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cuserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="suserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="duserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="receiver" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="orderdate" Type="DateTime" Precision="3" />
+          <Property Name="oway" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="odate" Type="DateTime" Precision="3" />
+          <Property Name="ostatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="isapproved" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="opwd" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="odid" />
+          </Key>
+          <Property Name="odid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderguid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cuserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="mid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="mqty" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="qrcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Score">
+          <Key>
+            <PropertyRef Name="scid" />
+          </Key>
+          <Property Name="scid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cuserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="orderguid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="scgrade" Type="Int32" />
+          <Property Name="sccontent" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="scdate" Type="DateTime" Precision="3" />
+          <Property Name="scphotoname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="scphotopath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="scoreid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="grade" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="StoreMember">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="suserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="spwd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="sname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="sphone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="semail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="saddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="shour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cateid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="sinf" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="sstatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="sreport" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="sdelivery" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="sphotoname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="sphotopath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="mephotoname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="mephotopath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="sopen" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="StoreReport">
+          <Key>
+            <PropertyRef Name="srid" />
+          </Key>
+          <Property Name="srid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="auserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="suserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="cuserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="orderguid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="srcontent" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="srreply" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="srstatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="stime" Type="DateTime" Precision="3" />
+          <Property Name="sre" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="ChuHou1120Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admin" EntityType="Self.Admin" />
+          <EntitySet Name="Category" EntityType="Self.Category" />
+          <EntitySet Name="CustomerMember" EntityType="Self.CustomerMember" />
+          <EntitySet Name="CustomerReport" EntityType="Self.CustomerReport" />
+          <EntitySet Name="Delivery" EntityType="Self.Delivery" />
+          <EntitySet Name="Like" EntityType="Self.Like" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" />
+          <EntitySet Name="MenuCategory" EntityType="Self.MenuCategory" />
+          <EntitySet Name="Order" EntityType="Self.Order" />
+          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" />
+          <EntitySet Name="Score" EntityType="Self.Score" />
+          <EntitySet Name="StoreMember" EntityType="Self.StoreMember" />
+          <EntitySet Name="StoreReport" EntityType="Self.StoreReport" />
+          <EntitySet Name="StoreCategory" EntityType="ChuHou1120Model.StoreCategory" />
+          <EntitySet Name="MenuCate" EntityType="ChuHou1120Model.MenuCate" />
+          <EntitySet Name="smmu" EntityType="ChuHou1120Model.smmu" />
+          <EntitySet Name="DetailMenu" EntityType="ChuHou1120Model.DetailMenu" />
+          <EntitySet Name="OrderDel" EntityType="ChuHou1120Model.OrderDel" />
+          <EntitySet Name="OrderReport" EntityType="ChuHou1120Model.OrderReport" />
+        </EntityContainer>
+        <EntityType Name="StoreCategory">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="Int32" Nullable="false" />
+          <Property Name="suserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="spwd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="sname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="sphone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="semail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="saddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="shour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sinf" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="sclass" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="sphotoname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="cateid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="mephotoname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MenuCate">
+          <Key>
+            <PropertyRef Name="mcat" />
+          </Key>
+          <Property Name="mcat" Type="Int32" Nullable="false" />
+          <Property Name="mtype" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="mcid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="mname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="mprice" Type="Int32" />
+          <Property Name="suserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="mid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Expr1" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Expr2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="historymenu" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="smmu">
+          <Key>
+            <PropertyRef Name="meid" />
+          </Key>
+          <Property Name="meid" Type="Int32" Nullable="false" />
+          <Property Name="mname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="mprice" Type="Int32" />
+          <Property Name="sname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DetailMenu">
+          <Key>
+            <PropertyRef Name="odid" />
+          </Key>
+          <Property Name="odid" Type="Int32" Nullable="false" />
+          <Property Name="mname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="mprice" Type="Int32" />
+          <Property Name="mqty" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="orderguid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="mid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cuserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="cname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="suserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="sname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="OrderDel">
+          <Key>
+            <PropertyRef Name="oid" />
+          </Key>
+          <Property Name="oid" Type="Int32" Nullable="false" />
+          <Property Name="orderguid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cuserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="receiver" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="orderdate" Type="DateTime" Precision="3" />
+          <Property Name="oway" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="odate" Type="DateTime" Precision="3" />
+          <Property Name="ostatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="isapproved" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="opwd" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="suserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="duserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="OrderReport">
+          <Key>
+            <PropertyRef Name="oid" />
+          </Key>
+          <Property Name="oid" Type="Int32" Nullable="false" />
+          <Property Name="orderguid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cuserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="suserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="duserid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="receiver" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="orderdate" Type="DateTime" Precision="3" />
+          <Property Name="oway" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="odate" Type="DateTime" Precision="3" />
+          <Property Name="ostatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="isapproved" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="srcontent" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="srreply" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="srstatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="stime" Type="DateTime" Precision="3" />
+          <Property Name="sre" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ChuHou1120ModelStoreContainer" CdmEntityContainer="ChuHou1120Entities">
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="ChuHou1120Model.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="aid" ColumnName="aid" />
+                <ScalarProperty Name="auserid" ColumnName="auserid" />
+                <ScalarProperty Name="apwd" ColumnName="apwd" />
+                <ScalarProperty Name="aname" ColumnName="aname" />
+                <ScalarProperty Name="aphone" ColumnName="aphone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="ChuHou1120Model.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="caid" ColumnName="caid" />
+                <ScalarProperty Name="cateid" ColumnName="cateid" />
+                <ScalarProperty Name="sclass" ColumnName="sclass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerMember">
+            <EntityTypeMapping TypeName="ChuHou1120Model.CustomerMember">
+              <MappingFragment StoreEntitySet="CustomerMember">
+                <ScalarProperty Name="cretime" ColumnName="cretime" />
+                <ScalarProperty Name="ctime" ColumnName="ctime" />
+                <ScalarProperty Name="cid" ColumnName="cid" />
+                <ScalarProperty Name="cuserid" ColumnName="cuserid" />
+                <ScalarProperty Name="cpwd" ColumnName="cpwd" />
+                <ScalarProperty Name="cname" ColumnName="cname" />
+                <ScalarProperty Name="cphone" ColumnName="cphone" />
+                <ScalarProperty Name="cemail" ColumnName="cemail" />
+                <ScalarProperty Name="caddress" ColumnName="caddress" />
+                <ScalarProperty Name="cstatus" ColumnName="cstatus" />
+                <ScalarProperty Name="creport" ColumnName="creport" />
+                <ScalarProperty Name="cphotoname" ColumnName="cphotoname" />
+                <ScalarProperty Name="cphotopath" ColumnName="cphotopath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerReport">
+            <EntityTypeMapping TypeName="ChuHou1120Model.CustomerReport">
+              <MappingFragment StoreEntitySet="CustomerReport">
+                <ScalarProperty Name="cre" ColumnName="cre" />
+                <ScalarProperty Name="ctime" ColumnName="ctime" />
+                <ScalarProperty Name="crid" ColumnName="crid" />
+                <ScalarProperty Name="auserid" ColumnName="auserid" />
+                <ScalarProperty Name="cuserid" ColumnName="cuserid" />
+                <ScalarProperty Name="suserid" ColumnName="suserid" />
+                <ScalarProperty Name="orderguid" ColumnName="orderguid" />
+                <ScalarProperty Name="crcontent" ColumnName="crcontent" />
+                <ScalarProperty Name="crreply" ColumnName="crreply" />
+                <ScalarProperty Name="crstatus" ColumnName="crstatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Delivery">
+            <EntityTypeMapping TypeName="ChuHou1120Model.Delivery">
+              <MappingFragment StoreEntitySet="Delivery">
+                <ScalarProperty Name="historydel" ColumnName="historydel" />
+                <ScalarProperty Name="did" ColumnName="did" />
+                <ScalarProperty Name="duserid" ColumnName="duserid" />
+                <ScalarProperty Name="dpwd" ColumnName="dpwd" />
+                <ScalarProperty Name="dname" ColumnName="dname" />
+                <ScalarProperty Name="dphone" ColumnName="dphone" />
+                <ScalarProperty Name="suserid" ColumnName="suserid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Like">
+            <EntityTypeMapping TypeName="ChuHou1120Model.Like">
+              <MappingFragment StoreEntitySet="Like">
+                <ScalarProperty Name="cuserid" ColumnName="cuserid" />
+                <ScalarProperty Name="suserid" ColumnName="suserid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu">
+            <EntityTypeMapping TypeName="ChuHou1120Model.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="historymenu" ColumnName="historymenu" />
+                <ScalarProperty Name="meid" ColumnName="meid" />
+                <ScalarProperty Name="mid" ColumnName="mid" />
+                <ScalarProperty Name="suserid" ColumnName="suserid" />
+                <ScalarProperty Name="mname" ColumnName="mname" />
+                <ScalarProperty Name="mprice" ColumnName="mprice" />
+                <ScalarProperty Name="mcid" ColumnName="mcid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuCategory">
+            <EntityTypeMapping TypeName="ChuHou1120Model.MenuCategory">
+              <MappingFragment StoreEntitySet="MenuCategory">
+                <ScalarProperty Name="historycate" ColumnName="historycate" />
+                <ScalarProperty Name="mcat" ColumnName="mcat" />
+                <ScalarProperty Name="mcid" ColumnName="mcid" />
+                <ScalarProperty Name="mtype" ColumnName="mtype" />
+                <ScalarProperty Name="suserid" ColumnName="suserid" />
+                <ScalarProperty Name="mcphotoname" ColumnName="mcphotoname" />
+                <ScalarProperty Name="mcphotopath" ColumnName="mcphotopath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="ChuHou1120Model.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="opwd" ColumnName="opwd" />
+                <ScalarProperty Name="oid" ColumnName="oid" />
+                <ScalarProperty Name="orderguid" ColumnName="orderguid" />
+                <ScalarProperty Name="cuserid" ColumnName="cuserid" />
+                <ScalarProperty Name="suserid" ColumnName="suserid" />
+                <ScalarProperty Name="duserid" ColumnName="duserid" />
+                <ScalarProperty Name="receiver" ColumnName="receiver" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+                <ScalarProperty Name="oway" ColumnName="oway" />
+                <ScalarProperty Name="odate" ColumnName="odate" />
+                <ScalarProperty Name="ostatus" ColumnName="ostatus" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="isapproved" ColumnName="isapproved" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetail">
+            <EntityTypeMapping TypeName="ChuHou1120Model.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="odid" ColumnName="odid" />
+                <ScalarProperty Name="orderguid" ColumnName="orderguid" />
+                <ScalarProperty Name="cuserid" ColumnName="cuserid" />
+                <ScalarProperty Name="mid" ColumnName="mid" />
+                <ScalarProperty Name="mqty" ColumnName="mqty" />
+                <ScalarProperty Name="qrcode" ColumnName="qrcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Score">
+            <EntityTypeMapping TypeName="ChuHou1120Model.Score">
+              <MappingFragment StoreEntitySet="Score">
+                <ScalarProperty Name="grade" ColumnName="grade" />
+                <ScalarProperty Name="scoreid" ColumnName="scoreid" />
+                <ScalarProperty Name="scid" ColumnName="scid" />
+                <ScalarProperty Name="cuserid" ColumnName="cuserid" />
+                <ScalarProperty Name="orderguid" ColumnName="orderguid" />
+                <ScalarProperty Name="scgrade" ColumnName="scgrade" />
+                <ScalarProperty Name="sccontent" ColumnName="sccontent" />
+                <ScalarProperty Name="scdate" ColumnName="scdate" />
+                <ScalarProperty Name="scphotoname" ColumnName="scphotoname" />
+                <ScalarProperty Name="scphotopath" ColumnName="scphotopath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StoreMember">
+            <EntityTypeMapping TypeName="ChuHou1120Model.StoreMember">
+              <MappingFragment StoreEntitySet="StoreMember">
+                <ScalarProperty Name="sopen" ColumnName="sopen" />
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="suserid" ColumnName="suserid" />
+                <ScalarProperty Name="spwd" ColumnName="spwd" />
+                <ScalarProperty Name="sname" ColumnName="sname" />
+                <ScalarProperty Name="sphone" ColumnName="sphone" />
+                <ScalarProperty Name="semail" ColumnName="semail" />
+                <ScalarProperty Name="saddress" ColumnName="saddress" />
+                <ScalarProperty Name="shour" ColumnName="shour" />
+                <ScalarProperty Name="cateid" ColumnName="cateid" />
+                <ScalarProperty Name="sinf" ColumnName="sinf" />
+                <ScalarProperty Name="sstatus" ColumnName="sstatus" />
+                <ScalarProperty Name="sreport" ColumnName="sreport" />
+                <ScalarProperty Name="sdelivery" ColumnName="sdelivery" />
+                <ScalarProperty Name="sphotoname" ColumnName="sphotoname" />
+                <ScalarProperty Name="sphotopath" ColumnName="sphotopath" />
+                <ScalarProperty Name="mephotoname" ColumnName="mephotoname" />
+                <ScalarProperty Name="mephotopath" ColumnName="mephotopath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StoreReport">
+            <EntityTypeMapping TypeName="ChuHou1120Model.StoreReport">
+              <MappingFragment StoreEntitySet="StoreReport">
+                <ScalarProperty Name="sre" ColumnName="sre" />
+                <ScalarProperty Name="stime" ColumnName="stime" />
+                <ScalarProperty Name="srid" ColumnName="srid" />
+                <ScalarProperty Name="auserid" ColumnName="auserid" />
+                <ScalarProperty Name="suserid" ColumnName="suserid" />
+                <ScalarProperty Name="cuserid" ColumnName="cuserid" />
+                <ScalarProperty Name="orderguid" ColumnName="orderguid" />
+                <ScalarProperty Name="srcontent" ColumnName="srcontent" />
+                <ScalarProperty Name="srreply" ColumnName="srreply" />
+                <ScalarProperty Name="srstatus" ColumnName="srstatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StoreCategory">
+            <EntityTypeMapping TypeName="ChuHou1120Model.StoreCategory">
+              <MappingFragment StoreEntitySet="StoreCategory">
+                <ScalarProperty Name="mephotoname" ColumnName="mephotoname" />
+                <ScalarProperty Name="cateid" ColumnName="cateid" />
+                <ScalarProperty Name="sphotoname" ColumnName="sphotoname" />
+                <ScalarProperty Name="sclass" ColumnName="sclass" />
+                <ScalarProperty Name="sinf" ColumnName="sinf" />
+                <ScalarProperty Name="shour" ColumnName="shour" />
+                <ScalarProperty Name="saddress" ColumnName="saddress" />
+                <ScalarProperty Name="semail" ColumnName="semail" />
+                <ScalarProperty Name="sphone" ColumnName="sphone" />
+                <ScalarProperty Name="sname" ColumnName="sname" />
+                <ScalarProperty Name="spwd" ColumnName="spwd" />
+                <ScalarProperty Name="suserid" ColumnName="suserid" />
+                <ScalarProperty Name="sid" ColumnName="sid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuCate">
+            <EntityTypeMapping TypeName="ChuHou1120Model.MenuCate">
+              <MappingFragment StoreEntitySet="MenuCate">
+                <ScalarProperty Name="historymenu" ColumnName="historymenu" />
+                <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="mid" ColumnName="mid" />
+                <ScalarProperty Name="suserid" ColumnName="suserid" />
+                <ScalarProperty Name="mprice" ColumnName="mprice" />
+                <ScalarProperty Name="mname" ColumnName="mname" />
+                <ScalarProperty Name="mcid" ColumnName="mcid" />
+                <ScalarProperty Name="mtype" ColumnName="mtype" />
+                <ScalarProperty Name="mcat" ColumnName="mcat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="smmu">
+            <EntityTypeMapping TypeName="ChuHou1120Model.smmu">
+              <MappingFragment StoreEntitySet="smmu">
+                <ScalarProperty Name="sname" ColumnName="sname" />
+                <ScalarProperty Name="mprice" ColumnName="mprice" />
+                <ScalarProperty Name="mname" ColumnName="mname" />
+                <ScalarProperty Name="meid" ColumnName="meid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailMenu">
+            <EntityTypeMapping TypeName="ChuHou1120Model.DetailMenu">
+              <MappingFragment StoreEntitySet="DetailMenu">
+                <ScalarProperty Name="sname" ColumnName="sname" />
+                <ScalarProperty Name="suserid" ColumnName="suserid" />
+                <ScalarProperty Name="cname" ColumnName="cname" />
+                <ScalarProperty Name="cuserid" ColumnName="cuserid" />
+                <ScalarProperty Name="mid" ColumnName="mid" />
+                <ScalarProperty Name="orderguid" ColumnName="orderguid" />
+                <ScalarProperty Name="mqty" ColumnName="mqty" />
+                <ScalarProperty Name="mprice" ColumnName="mprice" />
+                <ScalarProperty Name="mname" ColumnName="mname" />
+                <ScalarProperty Name="odid" ColumnName="odid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDel">
+            <EntityTypeMapping TypeName="ChuHou1120Model.OrderDel">
+              <MappingFragment StoreEntitySet="OrderDel">
+                <ScalarProperty Name="dname" ColumnName="dname" />
+                <ScalarProperty Name="duserid" ColumnName="duserid" />
+                <ScalarProperty Name="suserid" ColumnName="suserid" />
+                <ScalarProperty Name="opwd" ColumnName="opwd" />
+                <ScalarProperty Name="isapproved" ColumnName="isapproved" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="ostatus" ColumnName="ostatus" />
+                <ScalarProperty Name="odate" ColumnName="odate" />
+                <ScalarProperty Name="oway" ColumnName="oway" />
+                <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="receiver" ColumnName="receiver" />
+                <ScalarProperty Name="cuserid" ColumnName="cuserid" />
+                <ScalarProperty Name="orderguid" ColumnName="orderguid" />
+                <ScalarProperty Name="oid" ColumnName="oid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderReport">
+            <EntityTypeMapping TypeName="ChuHou1120Model.OrderReport">
+              <MappingFragment StoreEntitySet="OrderReport">
+                <ScalarProperty Name="sre" ColumnName="sre" />
+                <ScalarProperty Name="stime" ColumnName="stime" />
+                <ScalarProperty Name="srstatus" ColumnName="srstatus" />
+                <ScalarProperty Name="srreply" ColumnName="srreply" />
+                <ScalarProperty Name="srcontent" ColumnName="srcontent" />
+                <ScalarProperty Name="isapproved" ColumnName="isapproved" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="ostatus" ColumnName="ostatus" />
+                <ScalarProperty Name="odate" ColumnName="odate" />
+                <ScalarProperty Name="oway" ColumnName="oway" />
+                <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="receiver" ColumnName="receiver" />
+                <ScalarProperty Name="dname" ColumnName="dname" />
+                <ScalarProperty Name="duserid" ColumnName="duserid" />
+                <ScalarProperty Name="suserid" ColumnName="suserid" />
+                <ScalarProperty Name="cuserid" ColumnName="cuserid" />
+                <ScalarProperty Name="orderguid" ColumnName="orderguid" />
+                <ScalarProperty Name="oid" ColumnName="oid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

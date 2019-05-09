@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2><img src="~/images/verification.png" width="50" /><label color: #fff;>&nbsp;登入</label></h2>
+
+
+<form action="@Url.Action("Login")" method="post">
+    <div class="form-horizontal">
+
+        <hr />
+        <div class="form-group">
+            <h4><span class="control-label col-md-2 glyphicon glyphicon-zoom-in">請選擇登入身分</span></h4>
+            <div>
+                <input type="button" value="店家" onclick="location.href='LoginSto'" class="btn btn-success btn-md">&nbsp;&nbsp;
+                <input type="button" value="外送員" onclick="location.href='LoginDel'" class="btn btn-success btn-md">
+
+            </div>
+        </div>
+    </div>
+</form>

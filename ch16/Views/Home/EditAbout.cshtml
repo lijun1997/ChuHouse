@@ -1,0 +1,92 @@
+﻿@model ch16.Models.StoreMember
+
+@{
+    ViewBag.Title = "EditAbout";
+}
+
+<h2><img src="~/images/retail.png" width="50" /><label color: #fff;> 修改會員資料</label></h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.sid)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.suserid, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.suserid)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.spwd, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.spwd, new { htmlAttributes = new { @class = "form-control", type = "password", maxlength = "20", required = "required" } })
+                @Html.ValidationMessageFor(model => model.spwd, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sname, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.sname, new { htmlAttributes = new { @class = "form-control", type = "text", maxlength = "20", required = "required" }  })
+                @Html.ValidationMessageFor(model => model.sname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sphone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.sphone, new { htmlAttributes = new { @class = "form-control", type = "tel", required = "required" } })
+                @Html.ValidationMessageFor(model => model.sphone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.semail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.semail, new { htmlAttributes = new { @class = "form-control", type = "email", required = "required" } })
+                @Html.ValidationMessageFor(model => model.semail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.saddress, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.saddress, new { htmlAttributes = new { @class = "form-control", type = "text", maxlength = "50", required = "required" } })
+                @Html.ValidationMessageFor(model => model.saddress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.shour, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.shour, new { htmlAttributes = new { @class = "form-control", type = "text", maxlength = "50", required = "required" } })
+                @Html.ValidationMessageFor(model => model.shour, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">            
+            @Html.LabelFor(model => model.sinf, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <textarea id="sinf" name="sinf" rows="15" cols="150" maxlength="200" required="required"></textarea>
+                @*@Html.EditorFor(model => model.sinf, new { htmlAttributes = new { @class = "form-control", type = "text", maxlength = "200", required = "required" } })*@
+                @Html.ValidationMessageFor(model => model.sinf, "", new { @class = "text-danger" })
+            </div>
+        </div>        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="確定修改" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("返回", "About")
+</div>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1b2f4f7e440c47e891bbf6f4bcad04ba" Name="Diagram1">
+        <EntityTypeShape EntityType="ChuHou1120Model.Admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChuHou1120Model.Category" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChuHou1120Model.CustomerMember" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChuHou1120Model.CustomerReport" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChuHou1120Model.Delivery" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChuHou1120Model.Like" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChuHou1120Model.Menu" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChuHou1120Model.MenuCategory" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChuHou1120Model.Order" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChuHou1120Model.OrderDetail" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChuHou1120Model.Score" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChuHou1120Model.StoreMember" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChuHou1120Model.StoreReport" Width="1.5" PointX="8.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChuHou1120Model.StoreCategory" Width="1.5" PointX="7.375" PointY="9.75" />
+        <EntityTypeShape EntityType="ChuHou1120Model.MenuCate" Width="1.5" PointX="9.375" PointY="9.75" />
+        <EntityTypeShape EntityType="ChuHou1120Model.smmu" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ChuHou1120Model.DetailMenu" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="ChuHou1120Model.OrderDel" Width="1.5" PointX="11.375" PointY="3.75" />
+        <EntityTypeShape EntityType="ChuHou1120Model.OrderReport" Width="1.5" PointX="3.375" PointY="11.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

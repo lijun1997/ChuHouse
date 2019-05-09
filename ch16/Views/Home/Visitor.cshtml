@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Visitor";
+}
+
+<div class="jumbotron" style="background-color:lightyellow" align="center" valign="center">
+    <p>
+        <img src="~/images/welcome.png" width="200" />
+    </p>
+    @*<h2>歡迎光臨</h2>*@
+    <p class="lead">有興趣歡迎加入會員</p>    
+</div>
+
+<div class="row">
+    <div class="col-md-4"  align="center" valign="center">
+        <h3><img src="~/images/one.png" width="40" />第一步</h3>
+        <p>@Html.ActionLink("先註冊您的專屬會員~", "Register", "Register")</p>
+    </div>
+    <div class="col-md-4"  align="center" valign="center">
+        <h3><img src="~/images/two.png" width="40" />第二步</h3>
+        <p>新增您的菜單</p>
+
+    </div>
+    <div class="col-md-4"  align="center" valign="center">
+        <h3><img src="~/images/three.png" width="40" />第三步</h3>
+        <p>接收訂單，開始營業囉!~~</p>
+    </div>
+</div>
+

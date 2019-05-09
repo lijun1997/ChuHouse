@@ -1,0 +1,107 @@
+﻿@model ch16.Models.CVMdemu
+@{
+    ViewBag.Title = "DelOrderDetail";
+}
+<h2><img src="~/images/list.png" width="50" /><label color: #fff;> 訂單詳情</label></h2>
+
+<div class="row">
+    <div class="col-xs-6">
+        <label font-size: 30px; color: #fff;>訂單</label>
+        <table class="table table-bordered">
+            @foreach (var item in Model.order)
+            {
+                <tr>
+                    <td>
+                        收件人:
+                    </td>
+                    <td>
+                        @item.receiver
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        電話:
+                    </td>
+                    <td>
+                        @item.phone
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        取餐時間:
+                    </td>
+                    <td>
+                        @item.odate
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        地址:
+                    </td>
+                    <td>
+                        @item.address                        
+                    </td>
+                </tr>               
+            }
+        </table>
+    </div>
+
+
+    <div class="col-xs-6">
+        <label font-size: 30px; color: #fff;>餐點</label>
+        <table class="table table-striped">
+            <tr>
+                <td>
+                    餐點
+                </td>
+                <td>
+                    價錢
+                </td>
+                <td>
+                    訂購數量
+                </td>
+                <td>
+                    總價
+                </td>
+            </tr>
+            @{
+                var b = ViewBag.price;
+            }
+            @{
+                int c = 0;
+            }
+            @foreach (var item in Model.menu)
+            {
+
+                <tr>
+                    <td>
+                        @item.mname
+                    </td>
+                    <td>
+                        @item.mprice
+                    </td>
+                    <td>
+                        @item.mqty
+                    </td>
+                    <td>
+                        @b[c].ToString()
+                    </td>
+                </tr>
+                c = c + 1;
+            }
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                    <label font-size: 30px; color: #fff;>總共:</label>
+                </td>
+                <td>@ViewBag.sum</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div>
+    <button type="button" class="btn btn-link" style="font-size:medium" onclick="location.href='@Url.Action("DelOrder", "DelOrder")'">
+        <span class="glyphicon glyphicon-hand-left"></span> 返回
+    </button>
+</div>

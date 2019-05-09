@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ch16.Models.StoreReport>
+
+@{
+    ViewBag.Title = "Report";
+}
+
+<h2><img src="~/images/messages.png" width="50" /><label color: #fff;> 回報單</label></h2>
+
+<table class="table">
+    <tr>
+        <th>
+            訂單編號
+        </th>        
+        <th>
+            訂購人
+        </th>        
+        <th>
+            內容
+        </th>        
+        <th>  
+            回報單狀態
+        </th>        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.orderguid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cuserid)
+        </td>        
+        <td>
+            @Html.DisplayFor(modelItem => item.srcontent)
+        </td>        
+        <td>
+            @if (item.srstatus == null)
+            {
+                <label for="text">未處理</label>
+            } else if (item.srstatus == "1")
+            { <label for="text">已處理</label> }
+            
+        </td>        
+        <td>
+            @Html.ActionLink("詳情", "ReportDetail", new { id=item.orderguid })           
+        </td>
+    </tr>
+}
+
+</table>

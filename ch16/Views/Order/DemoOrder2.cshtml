@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ch16.Models.Order>
+
+@{
+    ViewBag.Title = "DemoOrder";
+}
+
+<h2>目前訂單</h2>
+<div class="row">
+    <div class="col-xs-2">
+        <table class="table table-bordered">
+            @*<tr>
+                <td>
+                    @Html.ActionLink(">>全部訂單", "DemoOrder")
+                </td>
+            </tr>*@
+            <tr>
+                <td>
+                    @Html.ActionLink(">>自取訂單", "DemoOrder1")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.ActionLink(">>外送訂單", "DemoOrder2")
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-xs-10">
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    訂單時間
+                </th>
+                <th>
+                    訂購人
+                </th>
+                <th>
+                    取餐時間
+                </th>
+                <th>
+                    取餐方式
+                </th>
+                <th>
+                    訂單進度
+                </th>
+                <th>
+
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.orderdate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cuserid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.odate)
+                    </td>
+                    <td>
+                        <img src="~/images/@item.oway" width="30" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ostatus)
+                    </td>
+
+                    <td>
+                        @*@Html.ActionLink("Edit", "Edit", new { id=item.oid }) |*@
+                        @Html.ActionLink("查看詳情", "OrderDetail", new { id = item.orderguid })
+                        @*@Html.ActionLink("Delete", "Delete", new { id=item.oid })*@
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+</div>

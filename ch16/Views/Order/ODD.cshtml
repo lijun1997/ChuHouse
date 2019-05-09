@@ -1,0 +1,111 @@
+﻿@model ch16.Models.CVMdemu
+@{
+    ViewBag.Title = "ODdelchoose";
+}
+
+<h2>訂單詳情</h2>
+<div class="row">
+    <div class="col-xs-6">
+        <label font-size: 30px; color: #fff;>訂單</label>
+        <table class="table table-bordered">
+            @foreach (var item in Model.order)
+            {
+                <tr>
+                    <td>
+                        收件人:
+                    </td>
+                    <td>
+                        @item.receiver
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        電話:
+                    </td>
+                    <td>
+                        @item.phone
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        地址:
+                    </td>
+                    <td>
+                        @item.address
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        狀態:
+                    </td>
+                    <td>
+                        @item.ostatus
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        外送員:
+                    </td>
+                    <td>
+                        @item.duserid
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        @using (Html.BeginForm("selectdel", "Order", FormMethod.Post))
+                        {
+                            <select id="duserid" name="duserid" class="form-control">
+                                @foreach (var it in Model.del)
+                                {
+                                    <option value="@it.duserid">@it.dname</option>
+                                }
+                            </select>
+                            <input type="submit" value="確定指派" />
+
+                        }
+
+                        @Html.ActionLink("指派外送員", "ODdelchoose2", new { id = item.orderguid })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <div class="col-xs-6">
+        <label font-size: 30px; color: #fff;>餐點</label>
+        <table class="table table-striped">
+            <tr>
+                <td>
+                    餐點
+                </td>
+                <td>
+                    價錢
+                </td>
+                <td>
+                    訂購數量
+                </td>
+                <td>
+                    總價 @ViewBag.sum
+                </td>
+            </tr>
+            @foreach (var item in Model.menu)
+            {
+                <tr>
+                    <td>
+                        @item.mname
+                    </td>
+                    <td>
+                        @item.mprice
+                    </td>
+                    <td>
+                        @item.mqty
+                    </td>
+                    <td>
+                        @ViewBag.price
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

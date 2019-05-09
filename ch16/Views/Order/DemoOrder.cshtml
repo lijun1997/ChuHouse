@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ch16.Models.Order>
+
+@{
+    ViewBag.Title = "DemoOrder";
+}
+
+<h2><img src="~/images/order.png" width="50" /><label color: #fff;> 目前訂單</label></h2>
+    <div class="row">       
+        <div class="col-xs-12">
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                        訂單時間
+                    </th>
+                    <th>
+                        訂購人
+                    </th>                   
+                    <th>
+                        取餐方式
+                    </th>
+                    <th>
+                        訂單進度
+                    </th>
+                    <th>
+
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.orderdate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.cuserid)
+                        </td>                        
+                        <td>
+                            <img src="~/images/@item.oway" width="30" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ostatus)
+                        </td>
+                        <td>
+                            @Html.ActionLink("查看詳情", "Detail1", new { id = item.orderguid })|
+                            @Html.ActionLink("回報", "CreateReport", new { id = item.orderguid })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+
+    </div>

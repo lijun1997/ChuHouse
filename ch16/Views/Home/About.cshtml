@@ -1,0 +1,88 @@
+﻿@model ch16.Models.StoreCategory
+
+@{
+    ViewBag.Title = "About";
+}
+
+<h2><img src="~/images/retail.png" width="50" /><label color: #fff;> 會員資料</label></h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+
+        </dt>
+        <dd>
+            <img src="~/images/@Model.sphotoname" width="300" />&nbsp;&nbsp;
+        </dd>
+        <dd>
+            @Html.ActionLink("修改圖片", "EditPhoto", new { id = Model.suserid })
+        </dd>
+        <dt>
+            帳號
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.suserid)
+        </dd>
+
+        <dt>
+            店名
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sname)
+        </dd>
+
+        <dt>
+            電話
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sphone)
+        </dd>
+
+        <dt>
+            信箱
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.semail)
+        </dd>
+
+        <dt>
+            地址
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.saddress)
+        </dd>
+
+        <dt>
+            營業時間
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.shour)
+        </dd>
+
+        <dt>
+            店家類型
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sclass)
+        </dd>
+
+        <dt>
+            店家介紹
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sinf)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("修改資訊", "EditAbout", new { id = Model.suserid })
+</p>

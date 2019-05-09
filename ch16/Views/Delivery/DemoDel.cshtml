@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ch16.Models.Delivery>
+
+@{
+    ViewBag.Title = "DemoDel";
+}
+<table>
+    <tr>
+        <td>
+            <h4><label color: #fff;>外送 @ViewBag.delopen </label></h4>
+        </td>
+        <td>
+            &nbsp;&nbsp;
+        </td>
+        <td>
+            @using (Html.BeginForm("openchoose", "Delivery", FormMethod.Post))
+            {
+                <input type="submit" value="@ViewBag.openchoose" class="btn btn-success btn-sm" />
+            }
+        </td>
+    </tr>    
+</table>
+
+<h2><img src="~/images/resume.png" width="50" /><label color: #fff;>外送員資訊</label></h2>
+<p>
+    <button type="button" class="btn btn-link" onclick="location.href='@Url.Action("CreateDel","Delivery")'">
+        <span class="glyphicon glyphicon-log-in"></span> 新增外送員
+    </button>
+</p>@*@Html.ActionLink("新增外送員", "CreateDel")*@
+<table class="table">
+    <tr>
+        <th>
+            帳號
+        </th>
+        <th>
+            密碼
+        </th>
+        <th>
+            外送員姓名
+        </th>
+        <th>
+            電話
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.duserid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dpwd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dphone)
+            </td>
+            <td>
+                <button type="button" class="btn btn-link" onclick="location.href='@Url.Action("EditDel", "Delivery", new { id = item.did })'">
+                    <span class="glyphicon glyphicon-pencil"></span> 修改
+                </button>|
+                @*<button type="button" class="btn btn-link" onclick="location.href='@Url.Action("EditDel", "Delivery", new { id = item.did })'">
+                    <span class="glyphicon glyphicon-trash"></span>刪除
+                </button>|*@
+                    @Html.ActionLink("刪除", "DeleteDel", new { id = item.did }, new { onclick = "return confirm('確定要刪除嗎?');" })               
+            </td>
+        </tr>
+        @*@Html.ActionLink("修改", "EditDel", new { id = item.did })*@
+
+    }
+</table>

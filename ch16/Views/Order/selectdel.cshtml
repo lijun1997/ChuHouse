@@ -1,0 +1,23 @@
+﻿@model IEnumerable<ch16.Models.Delivery>
+@{
+    ViewBag.Title = "selectdel";
+}
+
+<h2>選擇外送員</h2>
+<div class="form-group">
+    <div class="col-md-6">
+        @using (Html.BeginForm("selectdel", "Order", FormMethod.Post))
+        {
+            <select id="duserid" name="duserid" class="form-control">
+                @foreach (var it in Model)
+                {
+                    <option value="@it.duserid">@it.dname</option>
+                }
+            </select>
+            <input type="submit" value="確定指派" />
+
+        }
+
+
+    </div>
+</div>

@@ -1,0 +1,95 @@
+﻿@model ch16.Models.CVMdemu
+@{
+    ViewBag.Title = "OrderDel";
+}
+
+<h2>訂單詳情</h2>
+<div class="row">
+    <div class="col-xs-6">
+        <label font-size: 30px; color: #fff;>訂單</label>
+        <table class="table table-bordered">
+            @foreach (var item in Model.order)
+            {
+                <tr>
+                    <td>
+                        收件人:
+                    </td>
+                    <td>
+                        @item.receiver
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        電話:
+                    </td>
+                    <td>
+                        @item.phone
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        地址:
+                    </td>
+                    <td>
+                        @item.address
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        狀態:
+                    </td>
+                    <td>
+                        @item.ostatus
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <img src="~/images/2.png" width="30" />
+                        @Html.ActionLink("接受訂單", "OrderDel2", new { id = item.orderguid })
+
+                        @*<input type="button" value="接受訂單" onclick="location.href='@Url.Action("ODready","Order", new { id=item.orderguid})'" class="btn btn-warning" />*@
+                        <input type="button" value="拒絕訂單" onclick="location.href='@Url.Action("RefuseOrder","Order", new { id=item.orderguid})'" class="btn btn-link" />
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <div class="col-xs-6">
+        <label font-size: 30px; color: #fff;>餐點</label>
+        <table class="table table-striped">
+            <tr>
+                <td>
+                    餐點
+                </td>
+                <td>
+                    價錢
+                </td>
+                <td>
+                    訂購數量
+                </td>
+                <td>
+                    總價 @ViewBag.sum
+                </td>
+            </tr>
+            @foreach (var item in Model.menu)
+            {
+                <tr>
+                    <td>
+                        @item.mname
+                    </td>
+                    <td>
+                        @item.mprice
+                    </td>
+                    <td>
+                        @item.mqty
+                    </td>
+                    <td>
+                        @ViewBag.price
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@model ch16.Models.Score
+
+@{
+    ViewBag.Title = "OrderScore";
+}
+
+<h2><img src="~/images/thumbs-up.png" width="50" /><label color: #fff;> 訂單評價</label></h2>
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table table-striped">  
+            
+                <tr>
+                    <td>
+                        訂單編號:
+                    </td>
+                    <td>
+                        @Model.orderguid
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        訂購人:
+                    </td>
+                    <td>
+                        @Model.cuserid
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        評價內容:
+                    </td>
+                    <td>
+                        @Model.sccontent
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        評價分數:
+                    </td>
+                    <td>
+                        @for(int a=0;a< ViewBag.count; a++)
+                        {
+                            <img src="~/images/star.png" width="30" />
+                        }
+                    </td>
+                </tr>
+        </table>
+    </div>
+</div>
+<div>
+    <button type="button" class="btn btn-link" style="font-size:medium" onclick="location.href='@Url.Action("HistoryOrder", "Order")'">
+        <span class="glyphicon glyphicon-hand-left"></span> 返回
+    </button>
+</div>
+

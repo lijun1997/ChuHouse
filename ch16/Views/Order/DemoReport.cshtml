@@ -1,0 +1,53 @@
+﻿@model ch16.Models.StoreReport
+
+@{
+    ViewBag.Title = "DemoReport";
+}
+
+<h2><img src="~/images/question.png" width="50" /><label color: #fff;> 回報單</label></h2>
+
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table table-striped">
+
+            <tr>
+                <td>
+                    訂單編號:
+                </td>
+                <td>
+                    @Model.orderguid
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    訂購人:
+                </td>
+                <td>
+                    @Model.cuserid
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    回報內容:
+                </td>
+                <td>
+                    @Model.srcontent
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    處理:
+                </td>
+                <td>
+                    @ViewBag.report
+                    @Model.srreply
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div>
+    <button type="button" class="btn btn-link" style="font-size:medium" onclick="location.href='@Url.Action("DemoOrder", "Order")'">
+        <span class="glyphicon glyphicon-hand-left"></span> 返回
+    </button>
+</div>

@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "editpho";
+}
+<h2><img src="~/images/resume.png" width="50" /><label color: #fff;> 修改店家圖片</label></h2>
+
+<table class="table">
+    <tr>
+        
+        <th>
+            @using (Html.BeginForm("FileUpload2", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <label for="file">上傳店家圖片:</label>
+                <input type="file" name="file" id="file" style="width: 100%;" accept="image/gif, image/jpeg, image/png" />
+                <hr />
+                <input type="submit" value="上傳" class="submit" />
+            }
+        </th>
+        @*<th>
+            <img src="~/images/@Model.sphotoname" width="300" />
+        </th>*@
+    </tr>
+</table>
+@*<div>
+        <input type="button" value="確定修改" onclick="location.href='editstore'" class="btn btn-warning">
+</div>*@

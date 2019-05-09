@@ -1,0 +1,40 @@
+﻿@model ch16.Models.Delivery
+@{
+    ViewBag.Title = "DelAbout";
+}
+
+<h2>個人檔案</h2>
+<div class="row">
+    <div class="col-xs-4">
+        <table class="table">
+            <tr>
+                <th>
+                    帳號:
+                </th>
+                <th>
+                    @Model.duserid
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    姓名:
+                </th>
+                <th>
+                    @Model.dname
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    帳號:
+                </th>
+                <th>
+                    @Model.dphone
+                </th>
+            </tr>
+            <tr>
+                <td></td>
+                <td>@Html.ActionLink("修改資料","Edit", new { id = Model.duserid })</td>
+            </tr>
+        </table>
+    </div>
+</div>
